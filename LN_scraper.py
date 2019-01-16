@@ -85,8 +85,8 @@ while curr_page_num != 0:
     curr_page_num = int(curr_page_num) - 1
     get_ch_nums_and_links(curr_page_html)
 
-print (url_list)
-print (ch_num_list)
+#print (url_list)
+#print (ch_num_list)
 
 print ("Select Download type")
 file_type = ""
