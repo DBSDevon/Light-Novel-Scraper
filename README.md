@@ -3,8 +3,7 @@
 LN_scraper is a python script that aims to make downloading chapters of a specified lightnovel listed on https://www.novelupdates.com easier.
 
 ## Requirements:
-Python 3 //
-BeautifulSoup
+Python 3  BeautifulSoup
 
 ```bash
 pip install beautifulsoup4
