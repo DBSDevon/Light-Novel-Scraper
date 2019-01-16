@@ -11,7 +11,7 @@ pip install beautifulsoup4
 ```
 
 ## Usage
-
+Download LN_scraper.py. Run the script from terminal inside of the directory LN_scraper.py is located by typing in:
 ```bash
 pyton LN_scraper.py
 ```
