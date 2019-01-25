@@ -5,9 +5,11 @@ LN_scraper is a python script that aims to make downloading chapters of a specif
 ## Requirements:
 Python 3  
 BeautifulSoup
+requests
 
 ```bash
 pip install beautifulsoup4
+pip install requests
 ```
 
 ## Usage
