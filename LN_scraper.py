@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
+import time
+import pdfkit
+import os
 import requests
+from requests import get
+import urllib.request
 from bs4 import BeautifulSoup
 import re
 import string
@@ -15,6 +20,12 @@ start_page_obj = None
 
 soup = None
 
+path = os.getcwd()
+
+user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
+headers={'User-Agent':user_agent,}
+
+
 # Grabs novel title from user, and changes it into correct format. #
 # Removes capitlization, puncutation, and replaces spaces with '-' #
 def user_input():
@@ -24,6 +35,13 @@ def user_input():
 
   return novel_title
 
+def download(url, file_name):
+  # open in binary mode
+  with open(file_name, "wb") as file:
+    # get request
+    response = get(url)
+    # write to file
+    file.write(response.content)
 
 while start_page_obj is None and skip is False:
 
@@ -88,6 +106,15 @@ while curr_page_num != 0:
 #print (url_list)
 #print (ch_num_list)
 
+# Creates a directory to store novels in.
+print("Creating folder to store novel chapters, if it does not exist.")
+try:
+  os.mkdir(path + "/" + novel_title)
+except OSError:
+  print ("Folder already exists, moving on.")
+else:
+    print("Folder created at " + path + "/" + novel_title)
+
 print ("Select Download type")
 file_type = ""
 
@@ -101,3 +128,23 @@ while file_type != "A" and file_type != "B" and file_type != "C":
     if file_type != "A" and file_type != "B" and file_type != "C":
         print ("Invalid Input!")
         print ("Please choose A, B, or C")
+
+if file_type == "A":
+  for chap_num,chapter in enumerate(url_list): 
+    print("https://" + chapter)
+    print(ch_num_list[chap_num]+".pdf")
+    #HTML("https://" + chapter).write_pdf('/' + novel_title + '/' + ch_num_list[chap_num] + '.pdf')
+
+
+    path_wkthmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkthmltopdf)
+    pdfkit.from_url("https://" + chapter, novel_title+"/" + ch_num_list[chap_num] + ".pdf", configuration=config)
+    time.sleep(3)
+    #pdfkit.from_url("https://" + chapter,ch_num_list[chap_num]+".pdf")
+
+    #request=urllib.request.Request("https://"+chapter,None,headers)
+    #response = urllib.request.url(request)
+    #html = response.read()
+    #print("https://" + chapter)
+    #req = Request(url="https://" + chapter, headers=headers)
+    #html = urlopen(req).read()
