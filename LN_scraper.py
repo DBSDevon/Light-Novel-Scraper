@@ -119,21 +119,21 @@ print ("Select Download type")
 file_type = ""
 
 
-while file_type != "A" and file_type != "B" and file_type != "C":
-    file_type = str(input('Would you like to download this light novel as \n'
-    '(A) - .html files \n'
-    '(B) - .pdf files \n'
-    '(C) - as an ePub? \n'))
+while file_type != "A" #and file_type != "B" and file_type != "C":
+    file_type = str(input('Enter A if you would you like to download this light novel as a .pdf file  \n'
+    
+    #'(A) - .html files \n'
+    #'(A) - .pdf files \n'
+    #'(C) - as an ePub? \n'))
 
     if file_type != "A" and file_type != "B" and file_type != "C":
         print ("Invalid Input!")
-        print ("Please choose A, B, or C")
+       # print ("Please choose A, B, or C")
 
 if file_type == "A":
   for chap_num,chapter in enumerate(url_list): 
     print("https://" + chapter)
     print(ch_num_list[chap_num]+".pdf")
-    #HTML("https://" + chapter).write_pdf('/' + novel_title + '/' + ch_num_list[chap_num] + '.pdf')
 
 
     path_wkthmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
