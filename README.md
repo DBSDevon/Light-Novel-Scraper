@@ -15,7 +15,7 @@ pip install requests
 ## Usage
 Download LN_scraper.py. Run the script from terminal inside of the directory LN_scraper.py is located by typing in:
 ```bash
-pyton LN_scraper.py
+python LN_scraper.py
 ```
 
 ## Usage Cont.
